@@ -23,6 +23,7 @@ namespace RazeSoldier\SerenityEsi;
 use RazeSoldier\SerenityEsi\Model\Alliance\AlliancePublicInformation;
 use RazeSoldier\SerenityEsi\Model\Character\CharacterAffiliation;
 use RazeSoldier\SerenityEsi\Model\Character\CharacterPublicInformation;
+use RazeSoldier\SerenityEsi\Model\Corporation\CorporationPublicInformation;
 use RazeSoldier\SerenityEsi\Model\Universe\TypeInformation;
 
 interface EsiService
@@ -34,6 +35,14 @@ interface EsiService
      * @throws Api\EsiCallException
      */
     public function getCharacterPublicInformation(int $characterId): CharacterPublicInformation;
+
+    /**
+     * 获得军团的公开信息
+     * @param int $corporationId
+     * @return CorporationPublicInformation
+     * @throws Api\EsiCallException
+     */
+    public function getCorporationPublicInformation(int $corporationId): CorporationPublicInformation;
 
     /**
      * 获得联盟的公开信息

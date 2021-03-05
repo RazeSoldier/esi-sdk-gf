@@ -20,10 +20,13 @@
 
 namespace RazeSoldier\SerenityEsi;
 
-use RazeSoldier\SerenityEsi\Model\Alliance\AlliancePublicInformation;
-use RazeSoldier\SerenityEsi\Model\Character\CharacterAffiliation;
-use RazeSoldier\SerenityEsi\Model\Character\CharacterPublicInformation;
-use RazeSoldier\SerenityEsi\Model\Universe\TypeInformation;
+use RazeSoldier\SerenityEsi\Model\{
+    Alliance\AlliancePublicInformation,
+    Character\CharacterAffiliation,
+    Character\CharacterPublicInformation,
+    Corporation\CorporationPublicInformation,
+    Universe\TypeInformation,
+};
 
 class EsiServiceImp implements EsiService
 {
@@ -34,8 +37,17 @@ class EsiServiceImp implements EsiService
      */
     public function getCharacterPublicInformation(int $characterId): CharacterPublicInformation
     {
-        $api = Api\Character\CharacterPublicInformation::latest($characterId);
-        return $api->get();
+        return Api\Character\CharacterPublicInformation::latest($characterId)->get();
+    }
+
+    /**
+     * @param int $corporationId
+     * @return CorporationPublicInformation
+     * @throws Api\EsiCallException
+     */
+    public function getCorporationPublicInformation(int $corporationId): CorporationPublicInformation
+    {
+        return Api\Corporation\CorporationPublicInformation::latest($corporationId)->get();
     }
 
     /**
