@@ -25,6 +25,7 @@ use RazeSoldier\SerenityEsi\Model\{
     Character\CharacterAffiliation,
     Character\CharacterPublicInformation,
     Corporation\CorporationPublicInformation,
+    Universe\RegionInformation,
     Universe\TypeInformation,
 };
 
@@ -78,5 +79,15 @@ class EsiServiceImp implements EsiService
     public function getUniverseType(int $typeId): TypeInformation
     {
         return Api\Universe\TypeInformation::latest($typeId)->get();
+    }
+
+    /**
+     * @param int $regionId
+     * @return RegionInformation
+     * @throws Api\EsiCallException
+     */
+    public function getRegionInformation(int $regionId): RegionInformation
+    {
+        return Api\Universe\RegionInformation::latest($regionId)->get();
     }
 }
