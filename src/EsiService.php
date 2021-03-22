@@ -24,6 +24,7 @@ use RazeSoldier\SerenityEsi\Model\Alliance\AlliancePublicInformation;
 use RazeSoldier\SerenityEsi\Model\Character\CharacterAffiliation;
 use RazeSoldier\SerenityEsi\Model\Character\CharacterPublicInformation;
 use RazeSoldier\SerenityEsi\Model\Corporation\CorporationPublicInformation;
+use RazeSoldier\SerenityEsi\Model\Universe\ConstellationInformation;
 use RazeSoldier\SerenityEsi\Model\Universe\RegionInformation;
 use RazeSoldier\SerenityEsi\Model\Universe\SolarSystemInformation;
 use RazeSoldier\SerenityEsi\Model\Universe\TypeInformation;
@@ -77,6 +78,14 @@ interface EsiService
      * @throws Api\EsiCallException
      */
     public function getRegionInformation(int $regionId): RegionInformation;
+
+    /**
+     * 获得星座信息
+     * @param int $constellationId
+     * @return ConstellationInformation
+     * @throws Api\EsiCallException
+     */
+    public function getConstellationInformation(int $constellationId): ConstellationInformation;
 
     /**
      * 获得星系信息

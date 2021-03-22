@@ -25,6 +25,7 @@ use RazeSoldier\SerenityEsi\Model\{
     Character\CharacterAffiliation,
     Character\CharacterPublicInformation,
     Corporation\CorporationPublicInformation,
+    Universe\ConstellationInformation,
     Universe\RegionInformation,
     Universe\SolarSystemInformation,
     Universe\TypeInformation,
@@ -90,6 +91,16 @@ class EsiServiceImp implements EsiService
     public function getRegionInformation(int $regionId): RegionInformation
     {
         return Api\Universe\RegionInformation::latest($regionId)->get();
+    }
+
+    /**
+     * @param int $constellationId
+     * @return ConstellationInformation
+     * @throws Api\EsiCallException
+     */
+    public function getConstellationInformation(int $constellationId): ConstellationInformation
+    {
+        return Api\Universe\ConstellationInformation::latest($constellationId)->get();
     }
 
     /**
