@@ -29,8 +29,13 @@ use Symfony\Component\HttpClient\Psr18Client;
  */
 class HttpClientFactory
 {
+    private static ?ClientInterface $cache = null;
+
     public static function make(): ClientInterface
     {
-        return new Psr18Client();
+        if (self::$cache === null) {
+            self::$cache = new Psr18Client();
+        }
+        return self::$cache;
     }
 }

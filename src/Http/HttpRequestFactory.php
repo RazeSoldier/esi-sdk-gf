@@ -29,8 +29,13 @@ use Psr\Http\Message\RequestFactoryInterface;
  */
 class HttpRequestFactory
 {
+    private static ?RequestFactoryInterface $cache = null;
+
     public static function make(): RequestFactoryInterface
     {
-        return new Psr17Factory();
+        if (self::$cache === null) {
+            self::$cache = new Psr17Factory();
+        }
+        return self::$cache;
     }
 }
