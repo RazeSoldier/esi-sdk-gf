@@ -127,7 +127,7 @@ abstract class EsiBase implements EsiApi
         }
         $queryStr = '';
         foreach ($this->queryMap as $key => $value) {
-            $queryStr .= "key=$value&";
+            $queryStr .= "$key=$value&";
         }
         return rtrim($queryStr, '&');
     }
