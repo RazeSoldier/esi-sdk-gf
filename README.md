@@ -75,13 +75,24 @@ var_dump($resp); // NULL
 var_dump($otherRequest->resourceIsNotModified()); // true
 ```
 
+### ESI错误速率限制
+
+ESI没有速率限制，但有错误速率限制。即在某个窗口期内失败的查询达到某个阀值就会触发，触发后所有的ESI端口会返回420响应。
+参见 [1](https://developers.eveonline.com/blog/article/error-limiting-imminent)
+和 [2](https://developers.eveonline.com/blog/article/esi-error-limits-go-live)
+
+对于国服ESI，错误速率限制为每分钟50次。欧服ESI为每分钟100次。
+
+你可以在调用API后（`$api->get()`）使用`$api->getEsiErrorLimitRemain()`获得剩余的次数和`$api->getEsiErrorLimitReset()`距离下次刷新次数还有多久
+
 ## 许可证
-该程序是开源的。你可以根据自由软件基金会发布的GNU通用公共许可证版本2（或更高的版本）的条款
-重新分发和/或修改它。  
+
+该程序是开源的。你可以根据自由软件基金会发布的GNU通用公共许可证版本2（或更高的版本）的条款 重新分发和/或修改它。  
 分发该程序是希望它会有用，但没有任何保证。甚至没有对适销性或特定用途适用性的暗示保证。  
 你应该已经与该程序一起收到了GNU通用公共许可证的副本。
 
 ## 架构
+
 _(下面列出的类名均在`RazeSoldier\SerenityEsi`名字空间下)_  
 本库以`EsiService`为中心，可以从这个核心类使用到本库所有的API。
 

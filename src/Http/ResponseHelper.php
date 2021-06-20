@@ -44,4 +44,22 @@ trait ResponseHelper
     {
         return $this->getStatusCode() === 304;
     }
+
+    /**
+     * 获得Esi错误速率限制的剩余次数
+     * @return int Esi还能接受多少次失败的查询
+     */
+    public function getEsiErrorLimitRemain(): int
+    {
+        return $this->httpResponse->getHeader('x-esi-error-limit-remain')[0];
+    }
+
+    /**
+     * 获得刷新Esi错误速率限制的剩余时间
+     * @return int 距离刷新错误速率限制还有多少秒
+     */
+    public function getEsiErrorLimitReset(): int
+    {
+        return $this->httpResponse->getHeader('x-esi-error-limit-reset')[0];
+    }
 }
