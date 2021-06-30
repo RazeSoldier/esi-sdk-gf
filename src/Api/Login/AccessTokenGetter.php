@@ -105,8 +105,8 @@ class AccessTokenGetter
 
     protected function getBody():? StreamInterface
     {
-        $scopes = implode(' ', $this->scopes);
+        $scopeStr = implode(' ', $this->scopes);
         $token = urlencode($this->refreshToken);
-        return Stream::create("grant_type=refresh_token&refresh_token=$token&client_id=" . self::CLIENT_ID . "&scope=$scopes");
+        return Stream::create("grant_type=refresh_token&refresh_token=$token&client_id=" . self::CLIENT_ID . "&scope=$scopeStr");
     }
 }
