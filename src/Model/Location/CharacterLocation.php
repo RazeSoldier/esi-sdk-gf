@@ -29,6 +29,6 @@ namespace RazeSoldier\SerenityEsi\Model\Location;
 class CharacterLocation
 {
     public int $solar_system_id;
-    public ?int $station_id;
-    public ?int $structure_id;
+    public ?int $station_id = null;
+    public ?int $structure_id = null;
 }
