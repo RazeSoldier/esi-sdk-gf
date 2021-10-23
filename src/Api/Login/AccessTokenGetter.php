@@ -68,12 +68,12 @@ class AccessTokenGetter
         try {
             $resp = $this->sendHttpRequest();
         } catch (ClientExceptionInterface $e) {
-            throw new EsiCallException($e);
+            throw new EsiCallException($e->getMessage(), $e);
         }
         $content = $resp->getBody()->getContents();
         if ($resp->getStatusCode() !== 200) {
             $e = new EsiException($resp, $content);
-            throw new EsiCallException($e);
+            throw new EsiCallException($e->getMessage(), $e);
         }
 
         try {
