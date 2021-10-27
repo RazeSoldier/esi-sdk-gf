@@ -27,7 +27,7 @@ use RazeSoldier\SerenityEsi\Api\PublicApi;
  * 获得角色公开信息
  * <pre>
  * Public information about a character
- * Route: /v4/characters/{character_id}/
+ * Route: /v5/characters/{character_id}/
  * Cached for up 86400 seconds
  * </pre>
  * @package RazeSoldier\SerenityEsi\Api\Character
@@ -38,17 +38,17 @@ class CharacterPublicInformation extends EsiBase implements PublicApi
 {
     protected string $endpoint = 'characters/{character_id}';
 
-    public static function v4(int $characterId): self
+    public static function v5(int $characterId): self
     {
         $api = new self;
-        $api->version = 'v4';
+        $api->version = 'v5';
         $api->paramMap['character_id'] = $characterId;
         return $api;
     }
 
     public static function latest(int $characterId): self
     {
-        return self::v4($characterId);
+        return self::v5($characterId);
     }
 
     protected function getModelClassName(): string

@@ -29,7 +29,6 @@ namespace RazeSoldier\SerenityEsi\Model\Character;
 class CharacterPublicInformation
 {
     public ?int $alliance_id = null;
-    public ?int $ancestry_id = null;
     public string $birthday;
     public int $bloodline_id;
     public int $corporation_id;
