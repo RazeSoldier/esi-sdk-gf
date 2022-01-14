@@ -30,6 +30,7 @@ use RazeSoldier\SerenityEsi\Api\AuthEsiBase;
  * This route is cached for up to 120 seconds
  * </pre>
  * @package RazeSoldier\SerenityEsi\Api\Wallet
+ * @method float get()
  */
 class CharacterWalletBalance extends AuthEsiBase
 {
