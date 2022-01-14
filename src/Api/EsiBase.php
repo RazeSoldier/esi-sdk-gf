@@ -88,15 +88,27 @@ abstract class EsiBase implements EsiApi
         }
 
         $this->httpResponse = $resp;
+        $json = json_decode($resp->getBody()->getContents());
+        if (empty($json)) {
+            return null;
+        }
+
+        return $this->handleResponse($json);
+    }
+
+    /**
+     * @throws EsiCallException
+     */
+    private function handleResponse($json)
+    {
         try {
-            $json = json_decode($resp->getBody()->getContents());
-            if (empty($json)) {
-                return null;
-            }
             if (is_array($json)) {
                 return $this->arrayJson2Model($json, $this->getModelClassName());
+            } elseif (is_object($json)) {
+                return $this->json2Model($json, $this->getModelClassName());
+            } else {
+                return $json;
             }
-            return $this->json2Model($json, $this->getModelClassName());
         } catch (JsonMapper_Exception $e) {
             throw new EsiCallException($e->getMessage(), $e);
         }
@@ -104,9 +116,9 @@ abstract class EsiBase implements EsiApi
 
     /**
      * 子类必须实现这个方法。该方法返回一个数据模型类的完全限定名称
-     * @return string|null 数据模型类的完全限定名称。当响应的JSON为一维的数组，请返回NULL
+     * @return string|null 数据模型类的完全限定名称。当响应的JSON为一维的数组或一个纯量时，请返回NULL
      */
-    abstract protected function getModelClassName():? string;
+    abstract protected function getModelClassName(): ?string;
 
     protected function getPath(): string
     {
