@@ -38,8 +38,7 @@ class CharacterSkillsTest extends TestCase
         $this->checkAuthOrSkip();
 
         $api = CharacterSkills::latest($this->getAuthCharacterId());
-        $api->setAccessToken($this->getAccessToken('esi-skills.read_skills.v1'));
-        $res = $api->get();
+        $res = $api->setAccessToken($this->getAccessToken('esi-skills.read_skills.v1'))->get();
         $this->assertIsInt($res->total_sp);
         $this->assertIsArray($res->skills);
         $this->assertInstanceOf(CharacterSkill::class, $res->skills[0]);

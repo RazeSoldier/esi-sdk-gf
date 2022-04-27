@@ -30,7 +30,7 @@ interface AuthApi extends EsiApi
      * 设置访问令牌
      * @param string $accessToken
      */
-    public function setAccessToken(string $accessToken): void;
+    public function setAccessToken(string $accessToken): self;
 
     /**
      * 获得访问令牌
