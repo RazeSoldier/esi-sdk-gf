@@ -44,6 +44,7 @@ class FleetMembers extends AuthEsiBase
     public static function v1(int $fleetID): self
     {
         $api = new self();
+        $api->version = 'v1';
         $api->paramMap['fleet_id'] = $fleetID;
         $api->queryMap['language'] = 'zh';
         return $api;
