@@ -30,7 +30,7 @@ use RazeSoldier\SerenityEsi\Api\AuthEsiBase;
  * This route is cached for up to 5 seconds
  * </pre>
  * @package RazeSoldier\SerenityEsi\Api\Fleet
- * @method \RazeSoldier\SerenityEsi\Model\Fleet\FleetMembers get()
+ * @method \RazeSoldier\SerenityEsi\Model\Fleet\FleetMembers[] get()
  */
 class FleetMembers extends AuthEsiBase
 {
