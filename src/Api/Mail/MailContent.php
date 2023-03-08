@@ -30,7 +30,7 @@ use RazeSoldier\SerenityEsi\Api\AuthEsiBase;
  * Cached for up to 30 seconds
  * </pre>
  * @package RazeSoldier\SerenityEsi\Api\Mail
- * @method MailContent get()
+ * @method \RazeSoldier\SerenityEsi\Model\Mail\MailContent get()
  */
 class MailContent extends AuthEsiBase
 {
