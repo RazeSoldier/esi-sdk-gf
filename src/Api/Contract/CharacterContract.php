@@ -21,6 +21,8 @@
 namespace RazeSoldier\SerenityEsi\Api\Contract;
 
 use RazeSoldier\SerenityEsi\Api\AuthEsiBase;
+use RazeSoldier\SerenityEsi\Api\Pageable;
+use RazeSoldier\SerenityEsi\Api\PageableImp;
 
 /**
  * 获得对角色可用的合同清单
@@ -34,8 +36,10 @@ use RazeSoldier\SerenityEsi\Api\AuthEsiBase;
  * @package RazeSoldier\SerenityEsi\Api\Contract
  * @method \RazeSoldier\SerenityEsi\Model\Contract\CharacterContract[]|null get()
  */
-class CharacterContract extends AuthEsiBase
+class CharacterContract extends AuthEsiBase implements Pageable
 {
+    use PageableImp;
+
     protected string $endpoint = 'characters/{character_id}/contracts';
 
     public static function v1(int $characterId): self
