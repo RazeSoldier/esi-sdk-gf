@@ -43,11 +43,11 @@ class CharacterContract
     /**
      * @var float|null Buyout price (for Auctions only)
      */
-    public ?float $buyout;
+    public ?float $buyout = null;
     /**
      * @var float|null Collateral price (for Couriers only)
      */
-    public ?float $collateral;
+    public ?float $collateral = null;
     /**
      * @var int contract_id integer
      */
@@ -55,11 +55,11 @@ class CharacterContract
     /**
      * @var string|null Date of confirmation of contract
      */
-    public ?string $date_accepted;
+    public ?string $date_accepted = null;
     /**
      * @var string|null Date of completed of contract
      */
-    public ?string $date_completed;
+    public ?string $date_completed = null;
     /**
      * @var string Expiration date of the contract
      */
@@ -91,15 +91,15 @@ class CharacterContract
     /**
      * @var float|null Price of contract (for ItemsExchange and Auctions)
      */
-    public ?float $price;
+    public ?float $price = null;
     /**
      * @var float|null Remuneration for contract (for Couriers only)
      */
-    public ?float $reward;
+    public ?float $reward = null;
     /**
      * @var int|null Start location ID (for Couriers contract)
      */
-    public ?int $start_location_id;
+    public ?int $start_location_id = null;
     /**
      * @var string Status of the the contract (Enum: [outstanding, in_progress, finished_issuer, finished_contractor, finished, cancelled, rejected, failed, deleted, reversed])
      */
@@ -107,7 +107,7 @@ class CharacterContract
     /**
      * @var string|null Title of the contract
      */
-    public ?string $title;
+    public ?string $title = null;
     /**
      * @var string Type of the contract (Enum: [unknown, item_exchange, auction, courier, loan])
      */
@@ -115,5 +115,5 @@ class CharacterContract
     /**
      * @var float|null Volume of items in the contract
      */
-    public ?float $volume;
+    public ?float $volume = null;
 }
