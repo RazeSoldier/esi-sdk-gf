@@ -40,7 +40,7 @@ class ContractItem
      * @var int|null -1 indicates that the item is a singleton (non-stackable).
      *                If the item happens to be a Blueprint, -1 is an Original and -2 is a Blueprint Copy
      */
-    public ?int $raw_quantity;
+    public ?int $raw_quantity = null;
     /**
      * @var int Unique ID for the item
      */
