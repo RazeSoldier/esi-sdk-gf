@@ -16,6 +16,6 @@ class UniverseNamesTest extends TestCase
         $api = UniverseNames::v3([500010]);
         $res = $api->get();
         $this->assertSame('faction', $res[0]->category);
-        $this->assertSame('古斯塔斯海盗', $res[0]->name);
+        $this->assertSame('古斯塔斯游寇', $res[0]->name);
     }
 }

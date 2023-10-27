@@ -24,6 +24,6 @@ trait SerenityEsiDomain
 {
     public function getDomain(): string
     {
-        return 'esi.evepc.163.com';
+        return 'ali-esi.evepc.163.com';
     }
 }
