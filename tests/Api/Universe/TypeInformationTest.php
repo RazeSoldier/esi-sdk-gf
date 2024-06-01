@@ -39,6 +39,15 @@ class TypeInformationTest extends TestCase
     }
 
     /**
+     * @throws EsiCallException
+     */
+    public function testEnResponse()
+    {
+        $res = TypeInformation::latest(40635, 'en')->get();
+        $this->assertSame('Stasis Webification Burst Projector', $res->name);
+    }
+
+    /**
      * @depends testBasic
      * @throws EsiCallException
      */

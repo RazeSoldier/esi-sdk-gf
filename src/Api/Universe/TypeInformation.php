@@ -37,18 +37,18 @@ class TypeInformation extends EsiBase implements PublicApi
 {
     protected string $endpoint = 'universe/types/{type_id}';
 
-    public static function v3(int $typeId): self
+    public static function v3(int $typeId, $lang = 'zh'): self
     {
         $api = new self();
         $api->version = 'v3';
         $api->paramMap['type_id'] = $typeId;
-        $api->headerMap['Accept-Language'] = 'zh'; // 使返回的信息为中文语言
+        $api->headerMap['Accept-Language'] = $lang;
         return $api;
     }
 
-    public static function latest(int $typeId): self
+    public static function latest(int $typeId, $lang = 'zh'): self
     {
-        return self::v3($typeId);
+        return self::v3($typeId, $lang);
     }
 
     /**
