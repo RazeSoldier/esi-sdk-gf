@@ -7,7 +7,7 @@
     "require": {
         "php": "^7.4 || ^8.0",
         "psr/http-client": "^1",
-        "symfony/http-client": "^5.2",
+        "symfony/http-client": "^7.1",
         "nyholm/psr7": "^1.4",
         "netresearch/jsonmapper": "^4.0",
         "ext-json": "*"
