@@ -27,7 +27,7 @@ use RazeSoldier\SerenityEsi\Api\PublicApi;
  * 获得军团公开信息
  * <pre>
  * Public information about a corporation
- * Route: /v4/corporations/{corporation_id}/
+ * Route: /v5/corporations/{corporation_id}/
  * This route is cached for up to 3600 seconds
  * </pre>
  * @package RazeSoldier\SerenityEsi\Api\Corporation
@@ -37,6 +37,9 @@ class CorporationPublicInformation extends EsiBase implements PublicApi
 {
     protected string $endpoint = 'corporations/{corporation_id}';
 
+    /**
+     * @deprecated v4 have been deprecated
+     */
     public static function v4(int $corporationId): self
     {
         $api = new self();
@@ -45,9 +48,17 @@ class CorporationPublicInformation extends EsiBase implements PublicApi
         return $api;
     }
 
+    public static function v5(int $corporationId): self
+    {
+        $api = new self();
+        $api->version = 'v5';
+        $api->paramMap['corporation_id'] = $corporationId;
+        return $api;
+    }
+
     public static function latest(int $corporationId): self
     {
-        return self::v4($corporationId);
+        return self::v5($corporationId);
     }
 
     protected function getModelClassName(): string

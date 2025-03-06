@@ -28,7 +28,7 @@ use RazeSoldier\SerenityEsi\Http\SetJsonRequestBody;
  * 根据角色ID批量查找这些角色的军团、联盟和NPC势力
  * <pre>
  * Bulk lookup of character IDs to corporation, alliance and faction
- * Route: /v1/characters/affiliation/
+ * Route: /v2/characters/affiliation/
  * Cached for up 3600 seconds
  * </pre>
  * @package RazeSoldier\SerenityEsi\Api\Character
@@ -41,6 +41,9 @@ class CharacterAffiliation extends EsiBase implements PublicApi
     protected string $endpoint = 'characters/affiliation';
     protected string $httpMethod = 'POST';
 
+    /**
+     * @deprecated v1 have been deprecated
+     */
     public static function v1(array $characterIds): self
     {
         $api = new self;
@@ -49,9 +52,17 @@ class CharacterAffiliation extends EsiBase implements PublicApi
         return $api;
     }
 
+    public static function v2(array $characterIds): self
+    {
+        $api = new self;
+        $api->version = 'v2';
+        $api->setJsonBody($characterIds);
+        return $api;
+    }
+
     public static function latest(array $characterIds): self
     {
-        return self::v1($characterIds);
+        return self::v2($characterIds);
     }
 
     protected function getModelClassName(): string
